@@ -4,16 +4,17 @@ const addButton = document.querySelector('.main-add-btn');
 const deleteButton = document.querySelector('.main-delete-btn');
 const todoList = document.querySelector('#todo-list');
 //--------------------------------------------------------
+// Element used more than once:
+//create checkBox:
+const checkboxInput = document.createElement('input');
+checkboxInput.setAttribute('class','form-check-input m-1 checkbox-item'); 
+checkboxInput.setAttribute('type','checkbox'); 
 
 //function to create the todo items:
 const createTodo = (text) => {
     // create the wrapper:
     const divWrapper = document.createElement("div");
     divWrapper.setAttribute('class','d-flex w-100 align-items-center justify-content-center todo-wrapper');
-    //create checkBox:
-    const checkboxInput = document.createElement('input');
-    checkboxInput.setAttribute('class','form-check-input m-1 checkbox-item'); 
-    checkboxInput.setAttribute('type','checkbox'); 
     //create li:
     const liTodo = document.createElement("li");
     liTodo.setAttribute('class','rounded-1 w-75 border-0 list-group-item');
@@ -73,6 +74,17 @@ const deleteItem = (e)=>{
   }
 }
 
+//function to edit just one item:
+const editItem =(e)=>{
+    const item=e.target;
+    if(item.classList[0] === 'edit-item'){
+        const li = item.parentElement.querySelector('LI');
+        const editValue = prompt('Edit the selected element:', li.innerText)
+        li.innerHTML='';
+        li.append(checkboxInput);
+        li.innerHTML += editValue;
+    }
+}
 
 //---------------------------------------------------------
 // 3.Events:
@@ -90,5 +102,7 @@ deleteButton.addEventListener('click', deleteAll)
 todoList.addEventListener('click', doneItem)
 //remove one item
 todoList.addEventListener('click', deleteItem)
+//edit one item
+todoList.addEventListener('click', editItem)
 
 
