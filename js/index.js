@@ -85,17 +85,18 @@ const editItem =(e)=>{
         li.innerHTML += editValue;
     }
 }
-
 //---------------------------------------------------------
+
 // 3.Events:
 //add todo clicking:
 addButton.addEventListener('click', addTodo)
-//add todo with ENTER
+//add todo with ENTER key
 input.addEventListener('keypress',function(e){ 
     if(e.keyCode === 13){
         addTodo();
     }
 })
+
 //remove all 
 deleteButton.addEventListener('click', deleteAll)
 //check  done item
