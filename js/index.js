@@ -18,7 +18,7 @@ const createTodo = (text) => {
     //create li:
     const liTodo = document.createElement("li");
     liTodo.setAttribute('class','rounded-1 w-75 border-0 list-group-item');
-    liTodo.append(checkboxInput);
+    liTodo.appendChild(checkboxInput);
     liTodo.innerHTML += text;
     //create edit button
     const editTodoButton = document.createElement("button");
@@ -34,7 +34,7 @@ const createTodo = (text) => {
     divWrapper.appendChild(editTodoButton);
     divWrapper.appendChild(deleteTodoButton);
     //append the wrapper inside the ul:
-    todoList.append(divWrapper);
+    todoList.appendChild(divWrapper);
 }
 
 //function to add todo item:
@@ -51,9 +51,7 @@ const addTodo =()=>{
 
 // function to delete all todos:
 const deleteAll = ()=>{
-    while(todoList.firstChild){
-        todoList.removeChild(todoList.firstChild);
-    }
+ todoList.innerHTML=''; 
 }
 
 //toogle class with checkbox:
